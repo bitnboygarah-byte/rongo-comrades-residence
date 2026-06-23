@@ -301,7 +301,7 @@ export default function RongoStayExplorerPage() {
                 );
               }
 
-              // SEQUENTIAL INTERACTIVE AD PREVIEW CARD (Dots removed completely)
+              // SEQUENTIAL INTERACTIVE AD PREVIEW CARD
               if (item.type === 'ad') {
                 const ad = item.data;
                 const whatsappUrl = `https://wa.me/${ad.phone_number.replace(/\s+/g, '')}?text=Hi%20${encodeURIComponent(ad.business_name)},%20I%20saw%20your%20ad%20on%20RongoStay.`;
@@ -309,7 +309,7 @@ export default function RongoStayExplorerPage() {
                 return (
                   <article key={`ad-${ad.id}-${index}`} className="bg-gradient-to-b from-slate-900/90 to-slate-950 border border-cyan-500/20 rounded-2xl overflow-hidden flex flex-col justify-between shadow-[0_0_25px_rgba(6,182,212,0.03)] group relative">
                     
-                    {/* Media Display Block */}
+                    {/* Media Display Block with Fixed Object Contain Fitting */}
                     <div className="h-44 bg-slate-950 relative overflow-hidden flex items-center justify-center border-b border-white/[0.02]">
                       {ad.is_video ? (
                         <div className="w-full h-full relative">
@@ -320,7 +320,7 @@ export default function RongoStayExplorerPage() {
                             loop
                             muted={isMuted}
                             playsInline
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                           <button
                             type="button"
@@ -338,7 +338,7 @@ export default function RongoStayExplorerPage() {
                         <img 
                           src={ad.media_url} 
                           alt={ad.business_name} 
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-102"
                         />
                       )}
                       
