@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/next';
 export const metadata: Metadata = {
   title: "RongoStay",
   description: "Student Housing Network",
@@ -142,14 +143,14 @@ export default function RootLayout({
                 href="/" 
                 className="px-5 py-2.5 text-xs font-mono font-bold tracking-wider uppercase border border-white/[0.05] bg-slate-900/80 rounded-xl text-slate-400 hover:text-white hover:border-white/20 hover:bg-slate-900 transition-all shadow-sm"
               >
-                // EXPLORE_ROOMS
+                {"// EXPLORE_ROOMS"}
               </Link>
               
               <Link 
                 href="/post" 
                 className="px-5 py-2.5 text-xs font-mono font-bold tracking-wider uppercase border border-amber-500/20 bg-amber-500/5 rounded-xl text-amber-400 hover:bg-gradient-to-r hover:from-amber-400 hover:to-amber-500 hover:text-slate-950 hover:border-amber-400 transition-all shadow-[0_4px_20px_rgba(245,158,11,0.1)]"
               >
-                + POST_ACCOMMODATION
+                {"+ POST_ACCOMMODATION"}
               </Link>
             </div>
 
@@ -161,6 +162,8 @@ export default function RootLayout({
           {children}
         </div>
 
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
