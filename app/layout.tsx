@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/next';
 export const metadata: Metadata = {
   title: "RongoStay",
   description: "Student Housing Network",
@@ -161,6 +162,8 @@ export default function RootLayout({
           {children}
         </div>
 
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
