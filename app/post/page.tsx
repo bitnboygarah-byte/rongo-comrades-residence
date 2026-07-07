@@ -5,11 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 import { verifyAdminAccess } from '../actions'; 
 import { ShieldAlert, KeyRound, Building2, Upload, CheckCircle2, Loader2, ArrowLeft, Trash2, MapPin, DollarSign, Edit2, Map, Megaphone } from 'lucide-react';
 import Link from 'next/link';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from '@/app/lib/supabase';
 
 interface Property {
   id: string;

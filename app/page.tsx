@@ -4,11 +4,7 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Search, MapPin, DollarSign, Volume2, VolumeX, Compass } from 'lucide-react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
+import { supabase } from '@/app/lib/supabase';
 interface Property {
   id: string;
   title?: string;

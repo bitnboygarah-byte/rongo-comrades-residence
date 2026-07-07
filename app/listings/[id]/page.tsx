@@ -7,11 +7,7 @@ import { Maximize2, X, ChevronLeft, ChevronRight, Phone, ArrowLeft, Trash2, Shie
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from '@/app/lib/supabase';
 
 interface House {
   id: string;

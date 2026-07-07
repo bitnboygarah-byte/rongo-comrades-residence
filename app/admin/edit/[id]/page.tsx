@@ -5,12 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
 import { Loader2, ArrowLeft, Save, Building2, MapPin, DollarSign, Phone, Sliders, Image as ImageIcon, Map } from 'lucide-react';
 import Link from 'next/link';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
+import { supabase } from '@/app/lib/supabase';
 export default function AdministrativeEditPage() {
   const router = useRouter();
   const { id } = useParams();
