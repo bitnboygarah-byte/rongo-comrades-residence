@@ -3,7 +3,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState, use } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { X, ChevronLeft, ChevronRight, Phone, ArrowLeft, ShieldAlert, Expand, Map } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Phone, ArrowLeft, ShieldAlert, Expand, Map, MapPin } from 'lucide-react';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
@@ -120,7 +120,7 @@ export default function StandaloneHostelDetailsPage({ params }: PageProps) {
         {/* Navigation Anchor */}
         <div className="mb-6">
           <Link href="/" className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-cyan-400 transition group">
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> BACK_TO_EXPLORER_MATRIX
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> BACK TO HOMEPAGE
           </Link>
         </div>
 
@@ -203,7 +203,7 @@ export default function StandaloneHostelDetailsPage({ params }: PageProps) {
           
           {hostel.amenities && hostel.amenities.length > 0 && (
             <div className="space-y-2">
-              <h3 className="text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest">Included Infrastructure</h3>
+              <h3 className="text-[10px] font-mono font-black text-slate-500 uppercase tracking-widest">Included Ammenities</h3>
               <div className="flex flex-wrap gap-2">
                 {hostel.amenities.map((amenity, idx) => (
                   <span key={idx} className="px-3 py-1 rounded-xl bg-slate-900 border border-white/[0.05] text-xs font-medium capitalize text-slate-300">
@@ -229,7 +229,7 @@ export default function StandaloneHostelDetailsPage({ params }: PageProps) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-950 border border-cyan-500/20 hover:border-cyan-400/60 text-xs font-mono font-bold text-slate-200 hover:text-cyan-400 transition-all shadow-md uppercase tracking-wider"
               >
-                📍 Launch Satellite Pin Routing
+                <MapPin className="w-4 h-4 text-slate-500 group-focus-within:text-teal-400 transition-colors shrink-0"></MapPin> Launch Satellite Pin Routing
               </a>
             </div>
           )}

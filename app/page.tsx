@@ -177,7 +177,7 @@ export default function RongoStayExplorerPage() {
             <div className="w-full md:w-[45%] flex items-center px-4 py-2.5 group relative">
               <Search className="w-4 h-4 text-slate-500 group-focus-within:text-cyan-400 transition-colors shrink-0" />
               <div className="w-full pl-3 flex flex-col">
-                <span className="text-[8px] font-mono font-bold tracking-widest text-slate-500 uppercase leading-none mb-0.5">01 // HOSTEL SEARCH</span>
+                <span className="text-[8px] font-mono font-bold tracking-widest text-slate-500 uppercase leading-none mb-0.5"> HOSTEL NAME SEARCH</span>
                 <input
                   type="text"
                   placeholder="Type house name to search..."
@@ -192,7 +192,7 @@ export default function RongoStayExplorerPage() {
             <div className="w-full md:w-[32%] flex items-center px-4 py-2.5 group relative">
               <MapPin className="w-4 h-4 text-slate-500 group-focus-within:text-teal-400 transition-colors shrink-0" />
               <div className="w-full pl-3 flex flex-col">
-                <span className="text-[8px] font-mono font-bold tracking-widest text-slate-500 uppercase leading-none mb-0.5">02 // SECTOR ZONE</span>
+                <span className="text-[8px] font-mono font-bold tracking-widest text-slate-500 uppercase leading-none mb-0.5"> REGION SEARCH</span>
                 <select
                   value={selectedLocation}
                   onChange={(e) => setSelectedLocation(e.target.value)}
@@ -211,7 +211,7 @@ export default function RongoStayExplorerPage() {
             <div className="w-full md:w-[23%] flex items-center px-4 py-2.5 group relative">
               <DollarSign className="w-4 h-4 text-slate-500 group-focus-within:text-emerald-400 transition-colors shrink-0" />
               <div className="w-full pl-3 flex flex-col">
-                <span className="text-[8px] font-mono font-bold tracking-widest text-slate-500 uppercase leading-none mb-0.5">03 // MAX BUDGET</span>
+                <span className="text-[8px] font-mono font-bold tracking-widest text-slate-500 uppercase leading-none mb-0.5"> MAXIMUM BUDGET</span>
                 <input
                   type="number"
                   placeholder="Max KES..."
@@ -266,7 +266,7 @@ export default function RongoStayExplorerPage() {
 
                     <div className="p-4 space-y-3.5 flex-1 flex flex-col justify-between">
                       <div className="space-y-1">
-                        <span className="text-[9px] font-mono font-black tracking-wider text-cyan-400 uppercase block">📍 {property.location}</span>
+                        <span className="text-[9px] font-mono font-black tracking-wider text-cyan-400 uppercase block">{property.location}</span>
                         <h3 className="font-bold text-sm text-white tracking-tight line-clamp-1">{displayTitle}</h3>
                       </div>
 
@@ -280,7 +280,7 @@ export default function RongoStayExplorerPage() {
 
                       <div className="border-t border-white/[0.04] pt-3 flex justify-between items-center">
                         <div>
-                          <p className="text-[8px] font-mono text-slate-500 uppercase">Rate per Semester</p>
+                          <p className="text-[8px] font-mono text-slate-500 uppercase">Rent per Semester</p>
                           <p className="text-xs font-black text-white font-mono">
                             {Number(displayPrice).toLocaleString()} <span className="text-cyan-400 text-[9px]">KES</span>
                           </p>
@@ -289,7 +289,7 @@ export default function RongoStayExplorerPage() {
                           href={`/hostel/${property.id}`}
                           className="bg-white hover:bg-cyan-500 text-slate-950 text-[9px] font-mono font-black px-3 py-2 rounded-lg transition-all text-center"
                         >
-                          VIEW_DETAILS_
+                          MORE DETAILS
                         </a>
                       </div>
                     </div>
@@ -338,8 +338,8 @@ export default function RongoStayExplorerPage() {
                         />
                       )}
                       
-                      <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[7px] font-mono font-black uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 backdrop-blur-md">
-                        SPONSORED_CAMPUS_AD
+                      <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[6px] font-mono font-black lowercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 backdrop-blur-md">
+                        SPONSORED AD
                       </span>
                     </div>
 
@@ -362,7 +362,7 @@ export default function RongoStayExplorerPage() {
                           rel="noopener noreferrer"
                           className="w-full block bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500 hover:text-slate-950 text-cyan-400 text-[9px] font-mono font-black py-2.5 rounded-lg transition-all text-center tracking-wider uppercase"
                         >
-                          CONNECT_ON_WHATSAPP // 💬
+                          WATSAPP CONNECTION
                         </a>
                       </div>
                     </div>
