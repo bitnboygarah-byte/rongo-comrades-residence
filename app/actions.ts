@@ -5,7 +5,6 @@
  * This prevents the token from leaking to the client browser.
  */
 export async function verifyAdminAccess(passcodeAttempt: string): Promise<boolean> {
-  // Pull the master key from your secure server environment variables (.env.local)
   const masterKey = process.env.ADMIN_MASTER_KEY;
 
   if (!masterKey) {
@@ -13,6 +12,6 @@ export async function verifyAdminAccess(passcodeAttempt: string): Promise<boolea
     return false;
   }
 
-  // Strictly evaluate validation parameters away from the client machine
-  return passcodeAttempt === masterKey;
+  // Trim whitespace on both ends to eliminate string matching discrepancies
+  return passcodeAttempt.trim() === masterKey.trim();
 }
