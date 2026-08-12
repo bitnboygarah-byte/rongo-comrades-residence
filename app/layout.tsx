@@ -52,7 +52,7 @@ export default function RootLayout({
               </div>
             </Link>
 
-            {/* LOGO WITH SUBTITLE ALIGNED STRICTLY UNDER "UNIVERSITY" */}
+            {/* LOGO WITH SUBTITLE ALIGNED UNDER UNIVERSITY */}
             <div className="flex flex-col shrink-0 items-end">
               <img
                 src="/rongo-logo.png"
@@ -78,6 +78,13 @@ export default function RootLayout({
                 className="px-4 py-2 text-xs font-mono font-bold tracking-wider uppercase border border-amber-500/30 bg-amber-500/10 rounded-xl text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition-all shadow-[0_2px_10px_rgba(245,158,11,0.15)]"
               >
                 ADMIN ZONE
+              </Link>
+
+              <Link 
+                href="/about" 
+                className="px-4 py-2 text-xs font-mono font-bold tracking-wider uppercase border border-white/[0.05] bg-slate-900/80 rounded-xl text-slate-300 hover:text-white hover:bg-slate-900 transition-all"
+              >
+                ABOUT US
               </Link>
             </div>
 
@@ -115,6 +122,14 @@ export default function RootLayout({
                 className="w-full py-2.5 px-4 text-xs font-mono font-bold tracking-wider uppercase border border-amber-500/30 bg-amber-500/10 rounded-xl text-amber-400 text-center shadow-[0_2px_10px_rgba(245,158,11,0.15)]"
               >
                 ADMIN ZONE
+              </Link>
+
+              <Link 
+                href="/about" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-2.5 px-4 text-xs font-mono font-bold tracking-wider uppercase border border-white/[0.05] bg-slate-900/90 rounded-xl text-slate-300 hover:text-white text-center"
+              >
+                ABOUT US
               </Link>
             </div>
           )}
