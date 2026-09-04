@@ -291,9 +291,9 @@ export default function AdministrativePostPage() {
       <div className="bg-slate-900 border border-amber-500/20 rounded-2xl p-6 sm:p-8 space-y-6 shadow-[0_0_40px_rgba(245,158,11,0.02)]">
         <div className="border-b border-white/[0.04] pb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="space-y-1">
-            <span className="text-[9px] font-mono text-amber-400 font-black tracking-widest uppercase block">// TERMINAL CONSOLE ACTIVE</span>
+            <span className="text-[9px] font-mono text-amber-400 font-black tracking-widest uppercase block">ACTIVE TERMINAL CONSOLE</span>
             <h1 className="text-xl font-black text-white uppercase tracking-tight flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-amber-400" /> Verify & Mint New Asset
+              <Building2 className="w-5 h-5 text-amber-400" /> List New Hostel
             </h1>
           </div>
           
@@ -303,14 +303,14 @@ export default function AdministrativePostPage() {
               href="/admin/ads"
               className="px-3 py-1.5 text-[9px] font-mono font-black uppercase tracking-wider bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 hover:bg-cyan-500 hover:text-slate-950 rounded-lg transition-all flex items-center gap-1"
             >
-              <Megaphone className="w-3 h-3" /> MANAGE_ADS_
+              <Megaphone className="w-3 h-3" /> ADS CENTER
             </Link>
             
             <button 
               onClick={() => setIsAuthenticated(false)}
               className="px-3 py-1.5 text-[9px] font-mono font-bold uppercase tracking-wider text-red-400 border border-red-500/20 bg-red-500/5 rounded-lg hover:bg-red-500 hover:text-white transition-all"
             >
-              LOCK_CONSOLE
+              EXIT PAGE
             </button>
           </div>
         </div>
@@ -440,7 +440,7 @@ export default function AdministrativePostPage() {
                   <Loader2 className="w-3.5 h-3.5 animate-spin" /> DISPATCHING_STRUCTURAL_BLUEPRINTS...
                 </>
               ) : (
-                "PUBLISH AND DEPLOY LIVE ASSET"
+                "PUBLISH AND DEPLOY ASSET LIVE"
               )}
             </button>
           </div>
@@ -450,8 +450,8 @@ export default function AdministrativePostPage() {
       {/* 2. LIVE PURGE AND ALTER LOGISTICS CONTAINER */}
       <div className="bg-slate-900 border border-white/[0.06] rounded-2xl p-6 sm:p-8 space-y-4 shadow-xl">
         <div className="border-b border-white/[0.04] pb-3">
-          <span className="text-[9px] font-mono text-cyan-400 font-black tracking-widest uppercase block">// TERMINAL CONTROL SYSTEM</span>
-          <h2 className="text-base font-black text-white uppercase tracking-tight">Active Infrastructure Inventory</h2>
+          <span className="text-[9px] font-mono text-cyan-400 font-black tracking-widest uppercase block"> TERMINAL CONTROL SYSTEM</span>
+          <h2 className="text-base font-black text-white uppercase tracking-tight">Active Hostel Listings</h2>
         </div>
 
         {loadingProperties ? (

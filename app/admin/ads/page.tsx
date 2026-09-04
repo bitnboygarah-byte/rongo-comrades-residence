@@ -147,7 +147,7 @@ export default function RongoStayAdAdminPage() {
       
       {/* Header Area without the Back Button */}
       <header className="max-w-xl mx-auto mb-8 border-b border-white/[0.05] pb-4">
-        <span className="text-[9px] font-mono font-black text-cyan-400 uppercase tracking-widest block">// MARKETING NODE</span>
+        <span className="text-[9px] font-mono font-black text-cyan-400 uppercase tracking-widest block"> MARKETING NODE</span>
         <h1 className="text-xl font-black text-white uppercase tracking-tight">Campaign Portal</h1>
       </header>
 
@@ -279,7 +279,7 @@ export default function RongoStayAdAdminPage() {
         {/* LIVE ACTIVE CAMPAIGN FEED TRACKER */}
         <section className="space-y-4">
           <div className="flex items-center justify-between border-b border-white/[0.05] pb-2">
-            <h2 className="font-mono font-black text-xs text-slate-400 uppercase tracking-widest">// CURRENT ACTIVE ROSTER ({adsFeed.length})</h2>
+            <h2 className="font-mono font-black text-xs text-slate-400 uppercase tracking-widest">CURRENT ACTIVE ADVERTS ({adsFeed.length})</h2>
             {isLoadingFeed && <Loader2 className="w-3.5 h-3.5 animate-spin text-cyan-400" />}
           </div>
 
