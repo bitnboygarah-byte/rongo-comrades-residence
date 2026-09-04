@@ -1,13 +1,16 @@
 'use client';
 export const dynamic = 'force-dynamic';
 import { useState, useEffect } from 'react';
-import { Megaphone, Briefcase, Phone, Upload, Film, ImageIcon, Loader2, Layers, Trash2, ExternalLink } from 'lucide-react';
+import { Megaphone, Briefcase, Phone, Upload, Film, ImageIcon, Loader2, Layers, Trash2, ExternalLink, MapPin, FileText } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase';
+
 export default function RongoStayAdAdminPage() {
   // Input fields tracking states
   const [businessName, setBusinessName] = useState('');
   const [serviceType, setServiceType] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [description, setDescription] = useState('');
+  const [mapLink, setMapLink] = useState('');
   const [adFile, setAdFile] = useState<File | null>(null);
   const [isVideo, setIsVideo] = useState(false);
 
@@ -92,6 +95,8 @@ export default function RongoStayAdAdminPage() {
             business_name: businessName.trim(),
             service_type: serviceType.trim(),
             phone_number: phoneNumber.trim(),
+            description: description.trim(),
+            map_link: mapLink.trim(),
             media_url: generatedPublicUrl,
             is_video: isVideo,
             is_active: true
@@ -104,6 +109,8 @@ export default function RongoStayAdAdminPage() {
       setBusinessName('');
       setServiceType('');
       setPhoneNumber('');
+      setDescription('');
+      setMapLink('');
       setAdFile(null);
       setIsVideo(false);
 
@@ -221,7 +228,37 @@ export default function RongoStayAdAdminPage() {
               </div>
             </div>
 
-            {/* Input 4: File Picker */}
+            {/* Input 4: Product / Custom Description */}
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-slate-400 font-mono text-[9px] uppercase font-bold">Product / Offer Description</label>
+              <div className="flex items-start bg-slate-950 border border-white/[0.06] rounded-xl px-3 py-2.5 focus-within:border-cyan-500/50 transition-all">
+                <FileText className="w-4 h-4 text-slate-600 mr-2 mt-0.5 shrink-0" />
+                <textarea
+                  rows={2}
+                  placeholder="e.g., Fast gas refill services with free home delivery around Kitere."
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="bg-transparent w-full text-white placeholder-slate-700 focus:outline-none resize-none"
+                />
+              </div>
+            </div>
+
+            {/* Input 5: Google Maps Link */}
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-slate-400 font-mono text-[9px] uppercase font-bold">Google Maps Pin Link</label>
+              <div className="flex items-center bg-slate-950 border border-white/[0.06] rounded-xl px-3 py-2.5 focus-within:border-cyan-500/50 transition-all">
+                <MapPin className="w-4 h-4 text-slate-600 mr-2 shrink-0" />
+                <input
+                  type="url"
+                  placeholder="e.g., https://maps.app.goo.gl/..."
+                  value={mapLink}
+                  onChange={(e) => setMapLink(e.target.value)}
+                  className="bg-transparent w-full text-white placeholder-slate-700 focus:outline-none font-mono"
+                />
+              </div>
+            </div>
+
+            {/* Input 6: File Picker */}
             <div className="flex flex-col space-y-1.5">
               <label className="text-slate-400 font-mono text-[9px] uppercase font-bold">Campaign Media File Blueprint</label>
               <div className="relative border border-dashed border-white/[0.08] hover:border-cyan-500/40 bg-slate-950 rounded-xl p-6 text-center group cursor-pointer transition-colors">
@@ -312,10 +349,16 @@ export default function RongoStayAdAdminPage() {
                       </a>
                     </div>
                     
-                    <div className="text-xs">
+                    <div className="text-xs space-y-0.5">
                       <h3 className="font-black text-white uppercase tracking-tight">{ad.business_name}</h3>
                       <p className="text-cyan-400 font-mono text-[10px] uppercase tracking-wider">{ad.service_type}</p>
-                      <p className="text-slate-500 font-mono text-[9px] mt-0.5">Routing: {ad.phone_number}</p>
+                      {ad.description && (
+                        <p className="text-slate-400 font-sans text-[10px] line-clamp-1">{ad.description}</p>
+                      )}
+                      <div className="flex items-center gap-3 text-slate-500 font-mono text-[9px] pt-0.5">
+                        <span>Routing: {ad.phone_number}</span>
+                        {ad.map_link && <span className="text-cyan-500">📍 Pin Linked</span>}
+                      </div>
                     </div>
                   </div>
 
@@ -323,7 +366,7 @@ export default function RongoStayAdAdminPage() {
                   <button
                     onClick={() => handleDeleteAd(ad.id)}
                     disabled={deletingId === ad.id}
-                    className="w-full sm:w-auto border border-rose-500/20 hover:bg-rose-500/10 text-rose-400 px-3 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 font-mono font-bold text-[10px] tracking-wide uppercase"
+                    className="w-full sm:w-auto border border-rose-500/20 hover:bg-rose-500/10 text-rose-400 px-3 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 font-mono font-bold text-[10px] tracking-wide uppercase shrink-0"
                   >
                     {deletingId === ad.id ? (
                       <>

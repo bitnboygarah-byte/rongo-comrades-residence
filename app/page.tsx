@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Search, MapPin, DollarSign, Volume2, VolumeX, Compass } from 'lucide-react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { supabase } from '@/app/lib/supabase';
+
 interface Property {
   id: string;
   title?: string;
@@ -104,16 +105,12 @@ export default function RongoStayExplorerPage() {
     let propertyIndex = 0;
     let localAdSlotCounter = 0;
 
-    // We build the layout linearly item-by-item to map perfectly to a responsive grid layout
     while (propertyIndex < filteredProperties.length || (mixedItems.length === 1 && ads.length > 0)) {
       const currentGridPosition = mixedItems.length;
 
-      // Condition: Place ad at position 1 (which is the 2nd Card), 
-      // then subsequently every 6 cards after that (Position 7, 13, 19...)
       const isAdSlot = currentGridPosition === 1 || (currentGridPosition > 1 && (currentGridPosition - 1) % 6 === 0);
 
       if (isAdSlot && ads.length > 0) {
-        // Calculate sequence order + global tick offset shuffle
         const targetedAdIndex = (localAdSlotCounter + adShiftOffset) % ads.length;
         mixedItems.push({ type: 'ad', data: ads[targetedAdIndex] });
         localAdSlotCounter++;
@@ -121,7 +118,6 @@ export default function RongoStayExplorerPage() {
         mixedItems.push({ type: 'property', data: filteredProperties[propertyIndex] });
         propertyIndex++;
       } else {
-        // Break loop if properties run dry and it's not a mandated ad layout space
         break;
       }
     }
@@ -297,15 +293,17 @@ export default function RongoStayExplorerPage() {
                 );
               }
 
-              // SEQUENTIAL INTERACTIVE AD PREVIEW CARD
+              // UPDATED AD PREVIEW CARD
               if (item.type === 'ad') {
                 const ad = item.data;
-                const whatsappUrl = `https://wa.me/${ad.phone_number.replace(/\s+/g, '')}?text=Hi%20${encodeURIComponent(ad.business_name)},%20I%20saw%20your%20ad%20on%20RongoStay.`;
+                const rawPhone = (ad.phone_number || '').replace(/\s+/g, '');
+                const whatsappUrl = `https://wa.me/${rawPhone}?text=Hi%20${encodeURIComponent(ad.business_name)},%20I%20saw%20your%20ad%20on%20RongoStay.`;
+                const googleMapsUrl = ad.map_link || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ad.business_name + ' Rongo')}`;
 
                 return (
                   <article key={`ad-${ad.id}-${index}`} className="bg-gradient-to-b from-slate-900/90 to-slate-950 border border-cyan-500/20 rounded-2xl overflow-hidden flex flex-col justify-between shadow-[0_0_25px_rgba(6,182,212,0.03)] group relative">
                     
-                    {/* Media Display Block with Fixed Object Contain Fitting */}
+                    {/* Media Display Block */}
                     <div className="h-44 bg-slate-950 relative overflow-hidden flex items-center justify-center border-b border-white/[0.02]">
                       {ad.is_video ? (
                         <div className="w-full h-full relative">
@@ -344,25 +342,42 @@ export default function RongoStayExplorerPage() {
                     </div>
 
                     {/* Meta/Text Action Fields */}
-                    <div className="p-4 space-y-4 flex-1 flex flex-col justify-between">
+                    <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
                       <div className="space-y-1">
-                        <span className="text-[8px] font-mono font-bold tracking-widest text-slate-500 uppercase block">BUSINESS BRAND PROFILE</span>
-                        <h3 className="font-black text-sm text-white tracking-tight line-clamp-1 font-mono uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-cyan-400">
+                        {/* Business Type Header */}
+                        <span className="text-[8px] font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20 inline-block">
+                          {ad.service_type || 'SPONSORED BUSINESS'}
+                        </span>
+
+                        {/* Business Name */}
+                        <h3 className="font-black text-sm text-white tracking-tight line-clamp-1 font-mono uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-cyan-400 pt-0.5">
                           {ad.business_name}
                         </h3>
+
+                        {/* Manual Description Area */}
                         <p className="text-[11px] text-slate-400 leading-normal line-clamp-2 font-medium pt-1">
-                          Active dynamic partner around campus area. Tap below to inquire info, products, delivery status or catalogs directly.
+                          {ad.description || 'Tap below to inquire info, products, delivery status or catalogs directly.'}
                         </p>
                       </div>
 
-                      <div className="border-t border-white/[0.03] pt-3">
+                      {/* Side-by-Side WhatsApp & Map Action Buttons */}
+                      <div className="border-t border-white/[0.03] pt-3 grid grid-cols-2 gap-2">
                         <a
                           href={whatsappUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full block bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500 hover:text-slate-950 text-cyan-400 text-[9px] font-mono font-black py-2.5 rounded-lg transition-all text-center tracking-wider uppercase"
+                          className="block bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500 hover:text-slate-950 text-emerald-400 text-[9px] font-mono font-black py-2 rounded-lg transition-all text-center tracking-wider uppercase truncate"
                         >
-                          WATSAPP CONNECTION
+                          WHATSAPP US
+                        </a>
+
+                        <a
+                          href={googleMapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500 hover:text-slate-950 text-cyan-400 text-[9px] font-mono font-black py-2 rounded-lg transition-all text-center tracking-wider uppercase truncate"
+                        >
+                          LOCATE US
                         </a>
                       </div>
                     </div>
