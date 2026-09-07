@@ -27,7 +27,7 @@ const nextConfig = {
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin', // Protects referral paths
+            value: 'strict-origin-when-cross-origin', // Protects referral paths
           },
           {
             key: 'Permissions-Policy',
@@ -39,8 +39,18 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            // Permits Next.js scripts, inline styles, Supabase API/Storage, and Sentry logging
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https: *.supabase.co; font-src 'self'; connect-src 'self' https://*.supabase.co https://*.sentry.io; frame-ancestors 'none';",
+            value: [
+              "default-src 'self';",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.sentry.io;",
+              "style-src 'self' 'unsafe-inline';",
+              "img-src 'self' data: blob: https://*.supabase.co;",
+              "font-src 'self' data:;",
+              "connect-src 'self' https://*.supabase.co https://*.sentry.io wss://*.supabase.co;",
+              "frame-ancestors 'none';",
+              "base-uri 'self';",
+              "form-action 'self';",
+              "object-src 'none';"
+            ].join(' '),
           },
         ],
       },
