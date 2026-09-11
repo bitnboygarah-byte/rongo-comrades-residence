@@ -6,6 +6,7 @@ import { createClient } from '@supabase/supabase-js';
 import { Loader2, ArrowLeft, Save, Building2, MapPin, DollarSign, Phone, Sliders, Image as ImageIcon, Map } from 'lucide-react';
 import Link from 'next/link';
 import { supabase } from '@/app/lib/supabase';
+
 export default function AdministrativeEditPage() {
   const router = useRouter();
   const { id } = useParams();
