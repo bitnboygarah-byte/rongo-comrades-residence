@@ -175,7 +175,7 @@ export default function StandaloneHostelDetailsPage({ params }: PageProps) {
                   }}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-mono font-black text-xs shadow-2xl transition-all active:scale-95 duration-100"
                 >
-                  <Expand className="w-4 h-4" /> VIEW FULL UNCROPPED PHOTO
+                  <Expand className="w-4 h-4" /> MAXIMIZE PIC
                 </button>
               </div>
             </>
